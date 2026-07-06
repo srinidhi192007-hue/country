@@ -1,0 +1,186 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #0f172a, #020617);
+  color: #e2e8f0;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1400px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* GRID (Netflix style layout) */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-top: 25px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1200px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+/* CARD LINK */
+.card-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 🎬 CINEMATIC CARD */
+.card {
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease;
+  height: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  position: relative;
+}
+
+/* hover = movie poster zoom */
+.card:hover {
+  transform: scale(1.05) translateY(-8px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+}
+
+/* FLAG IMAGE (cinematic zoom) */
+.flag-container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.flag {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .flag {
+  transform: scale(1.1);
+}
+
+/* CONTENT */
+.card-content {
+  padding: 15px;
+}
+
+.card-content h2 {
+  color: #ffffff;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.card-content p {
+  margin: 8px 0;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+/* BUTTON (cinema action button) */
+.details-btn {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #2563eb, #60a5fa);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+}
+
+.details-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px rgba(37, 99, 235, 0.4);
+}
+
+/* SEARCH (glass effect) */
+.search {
+  width: 100%;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  margin: 20px 0;
+  font-size: 16px;
+  background: rgba(255,255,255,0.05);
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.search:focus {
+  outline: none;
+  border: 1px solid #3b82f6;
+  box-shadow: 0 0 0 4px rgba(59,130,246,0.2);
+}
+
+/* FILTERS */
+select {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+  background: rgba(255,255,255,0.05);
+  color: white;
+}
+
+/* HEADER (cinema glass navbar) */
+.header {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(14px);
+  color: white;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header a {
+  color: #cbd5e1;
+  text-decoration: none;
+  margin-left: 20px;
+  transition: 0.3s;
+}
+
+.header a:hover {
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* FOOTER */
+.footer {
+  background: rgba(15, 23, 42, 0.9);
+  color: #cbd5e1;
+  text-align: center;
+  padding: 25px;
+  margin-top: 50px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
