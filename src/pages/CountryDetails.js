@@ -9,17 +9,18 @@ function CountryDetails() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+
+    const loadCountry = async () => {
+      try {
+        const data = await getCountryByCode(code);
+        setCountry(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
     loadCountry();
   }, [code]);
-
-  const loadCountry = async () => {
-    try {
-      const data = await getCountryByCode(code);
-      setCountry(data);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
   if (!country) {
     return (
@@ -33,8 +34,7 @@ function CountryDetails() {
     page: {
       minHeight: "100vh",
       padding: "40px 20px",
-      background:
-        "radial-gradient(circle at top, #0f172a, #020617)",
+      background: "radial-gradient(circle at top, #0f172a, #020617)",
       color: "#fff",
     },
 
@@ -68,8 +68,7 @@ function CountryDetails() {
       fontSize: "38px",
       fontWeight: "900",
       marginBottom: "30px",
-      background:
-        "linear-gradient(90deg,#60a5fa,#a78bfa,#22d3ee)",
+      background: "linear-gradient(90deg,#60a5fa,#a78bfa,#22d3ee)",
       WebkitBackgroundClip: "text",
       WebkitTextFillColor: "transparent",
     },
@@ -84,7 +83,6 @@ function CountryDetails() {
       width: "100%",
       borderRadius: "18px",
       boxShadow: "0 25px 60px rgba(0,0,0,0.5)",
-      transform: "scale(1)",
       transition: "0.5s ease",
     },
 
@@ -95,7 +93,6 @@ function CountryDetails() {
       background: "rgba(255,255,255,0.06)",
       border: "1px solid rgba(255,255,255,0.1)",
       backdropFilter: "blur(12px)",
-      transition: "0.3s",
     },
 
     label: {
@@ -144,7 +141,6 @@ function CountryDetails() {
         <h1 style={styles.title}>{country.name?.common}</h1>
 
         <div style={styles.grid}>
-          {/* LEFT */}
           <div>
             <img
               src={country.flags?.png}
@@ -154,9 +150,7 @@ function CountryDetails() {
 
             {country.coatOfArms?.png && (
               <div style={{ textAlign: "center", marginTop: "25px" }}>
-                <h3 style={{ color: "#cbd5e1" }}>
-                  Coat of Arms
-                </h3>
+                <h3 style={{ color: "#cbd5e1" }}>Coat of Arms</h3>
                 <img
                   src={country.coatOfArms.png}
                   alt="coat"
@@ -169,20 +163,15 @@ function CountryDetails() {
             )}
           </div>
 
-          {/* RIGHT */}
           <div>
             <div style={styles.glassBox}>
               <div style={styles.label}>Official Name</div>
-              <div style={styles.value}>
-                {country.name?.official}
-              </div>
+              <div style={styles.value}>{country.name?.official}</div>
             </div>
 
             <div style={styles.glassBox}>
               <div style={styles.label}>Capital</div>
-              <div style={styles.value}>
-                {country.capital?.[0] || "N/A"}
-              </div>
+              <div style={styles.value}>{country.capital?.[0] || "N/A"}</div>
             </div>
 
             <div style={styles.glassBox}>
