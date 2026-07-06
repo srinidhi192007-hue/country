@@ -1,6 +1,5 @@
 import { useEffect, useState, useRef } from "react";
 import SearchBar from "../components/SearchBar";
-import CountryCard from "../components/CountryCard";
 import CurrencyComparison from "../components/CurrencyComparison";
 import { getAllCountries } from "../services/countryService";
 
